@@ -682,7 +682,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/SNG.sol": "SNG"
+			"SNG.sol": "SNG"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -696,12 +696,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/SNG.sol": {
-			"keccak256": "0xf8737a4af25a277631c3e1ca3985ee074a46767a0c8af7bf6be935f9215ab132",
+		"SNG.sol": {
+			"keccak256": "0x57b5ee670c65d9704b48ee2e901a4308e906f772addb8b0936897994240b706e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://53f5f1bf3c4a17ee8dd402b29b3a973bf1fc14bf0ad753f04dbf386f75709673",
-				"dweb:/ipfs/QmSBFhJPgN6e5TNJ2aQnZLXe5FMKdF2nUZ8bEqC5PnXSbz"
+				"bzz-raw://fa105405d3a235d59b464daf415b54167c03e6d1c85677c049c397ec96e9862a",
+				"dweb:/ipfs/QmXeQivheNPXNU97MHU9kRhh57TwfPYcZEHUBCtQPVQp26"
 			]
 		}
 	},
