@@ -1,14 +1,4 @@
-/**
- *Submitted for verification at BscScan.com on 2025-07-09
-*/
 
-/**
- *Submitted for verification at testnet.bscscan.com on 2025-07-09
-*/
-
-/**
- *Submitted for verification at BscScan.com on 09.07.2025
-*/
 
 /*
 Name: Teather USD.Token
@@ -16,6 +6,7 @@ Symbol: USD.T.
 Decimals: 18
 Total supply: 100,000,000
 Network: BNB
+Contract :01
 
  SPDX-License-Identifier: MIT */
 
