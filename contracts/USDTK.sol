@@ -1,32 +1,25 @@
 /**
- *Submitted for verification at testnet.bscscan.com on 2025-07-04
+ *Submitted for verification at BscScan.com on 2025-07-09
 */
 
 /**
- *Submitted for verification at BscScan.com on 2024-05-08
+ *Submitted for verification at testnet.bscscan.com on 2025-07-09
 */
 
-/*────────────────────────────┐
-Name: USDTK Token
-Symbol: USDTK
+/**
+ *Submitted for verification at BscScan.com on 09.07.2025
+*/
+
+/*
+Name: Teather USD.Token
+Symbol: USD.T.
 Decimals: 18
 Total supply: 100,000,000
 Network: BNB
 
-
-Developed by Coinsult                       
- _____     _             _ _   
-|     |___|_|___ ___ _ _| | |_ 
-|   --| . | |   |_ -| | | |  _|
-|_____|___|_|_|_|___|___|_|_|  
-                               
-tg: @coinsult_tg
-──────────────────────────────┘
-
  SPDX-License-Identifier: MIT */
 
-pragma solidity ^0.8.19;
-
+pragma solidity 0.8.24;
 interface IUniswapV2Factory {
     function createPair(
         address tokenA,
@@ -328,7 +321,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
     }
 }
 
-contract USDTK is ERC20, Ownable {
+contract TEATHERTOKEN is ERC20, Ownable {
     using Address for address payable;
 
     IUniswapV2Router02 public uniswapV2Router;
@@ -352,7 +345,7 @@ contract USDTK is ERC20, Ownable {
     event SwapAndSendFee(uint256 tokensSwapped, uint256 bnbSend);
     event SwapTokensAtAmountUpdated(uint256 swapTokensAtAmount);
 
-    constructor() ERC20("USDTK Token", "USDTK") {
+    constructor() ERC20("Teather USD.Token", "USD.T") {
         address router;
         address pinkLock;
 
@@ -375,15 +368,17 @@ contract USDTK is ERC20, Ownable {
 
         uniswapV2Router = _uniswapV2Router;
         uniswapV2Pair = _uniswapV2Pair;
+       
 
         _approve(address(this), address(uniswapV2Router), type(uint256).max);
 
-        feeOnBuy = 3;
+        feeOnBuy = 1;
         feeOnSell = 3;
 
         feeOnTransfer = 0;
-        transferOwnership(0x5B38Da6a701c568545dCfcB03FcB875f56beddC4);
-        feeReceiver = 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2;
+        transferOwnership(0x7B8BdCFb0eb8037c8A87838C78155584F4B322e0);
+        feeReceiver = 0xb130F5808Df64bEE6C32d788EE2719cE986742Bf;
+     
 
         _isExcludedFromFees[owner()] = true;
         _isExcludedFromFees[address(0xdead)] = true;
@@ -397,10 +392,6 @@ contract USDTK is ERC20, Ownable {
     }
 
     receive() external payable {}
-
-    function creator() public pure returns (string memory) {
-        return "t.me/coinsult_tg";
-    }
 
     function claimStuckTokens(address token) external onlyOwner {
         require(
